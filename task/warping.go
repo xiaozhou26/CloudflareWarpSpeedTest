@@ -33,6 +33,7 @@ const (
 	wireguardHandshakeRespBytes = 92
 	quickModeMaxIpNum           = 1000
 	warpPublicKey               = "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="
+  warpPrivateKey                  = "gIRDDhcI8aXsj0kdTw2gngbyqTncKkPZEEhP5GZhDns="
 )
 
 var (
@@ -278,7 +279,7 @@ func shuffleAddrs(udpAddrs *[]*UDPAddr) {
 func InitHandshakePacket() {
 	if ReservedString != "" {
 		if PrivateKey == "" {
-			log.Fatalln("Reserved field must be used with private key")
+      PrivateKey = warpPrivateKey
 		}
 		r, err := utils.ParseReservedString(ReservedString)
 		if err != nil {
